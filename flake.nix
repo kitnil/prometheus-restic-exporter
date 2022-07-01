@@ -118,6 +118,13 @@
               $out/bin/restic-exporter -h
               runHook postCheck
             '';
+            # preConfigure phase to compile a statically linked executable
+            preConfigure = ''
+              export CGO_ENABLED=0
+              export GOOS=linux
+              export GOARCH=amd64
+            '';
+            ldflags = [ "-s" ]; # stripped binary
             doCheck = true;
             meta = with pkgs.lib; {
               description = "restic prometheus exporter";
