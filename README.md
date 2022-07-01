@@ -65,7 +65,7 @@ services.restic-exporter = {
     - source_labels:
         - "__param_target"
       target_label: target
-    - replacement: "host1:8049"
+    - replacement: "127.0.0.1:8999"
       target_label: "__address__"
   scrape_interval: "10m"
   scrape_timeout: "9m"
